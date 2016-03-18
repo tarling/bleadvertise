@@ -11,6 +11,9 @@
     "parse",
     "generate"
   ],
+  "scripts": {
+    "test": "mocha"
+  },
   "main": "index.js",
   "repository": {
     "type": "git",

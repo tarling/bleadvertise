@@ -7,13 +7,22 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-var PacketParser = require('./lib/parser');
-var PacketBuilder = require('./lib/serializer');
-
-module.exports.parse = PacketParser.parse;
-module.exports.parseLE = PacketParser.parseLE;
-module.exports.parseBE = PacketParser.parseBE;
-module.exports.serialize = PacketBuilder.serialize;
-
-// For testing only
-module.exports.split = PacketParser.split;
+(function (root, factory) {
+  if(typeof define === "function" && define.amd) {
+    define(['./lib/parser', './lib/serializer'], factory);
+  } else {
+    module.exports = factory(require('./lib/parser'), require('./lib/serializer'));
+  }
+}(this, function(PacketParser, PacketBuilder) {
+    
+    return {
+        parse: PacketParser.parse,
+        parseLE: PacketParser.parseLE,
+        parseBE: PacketParser.parseBE,
+        serialize: PacketBuilder.serialize,
+        
+        // For testing only
+        split: PacketParser.split
+    }
+    
+}));

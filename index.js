@@ -7,13 +7,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-(function (root, deps, factory) {
-  if(typeof define === "function" && define.amd) {
-    define(deps, factory);
-  } else {
-    module.exports = factory.apply(root, deps.map(require));
-  }
-}(this, ['./lib/parser', './lib/serializer'], function(PacketParser, PacketBuilder) {
+define(['./lib/parser', './lib/serializer'], function(PacketParser, PacketBuilder) {
 
     return {
         parse: PacketParser.parse,
@@ -25,4 +19,4 @@
         split: PacketParser.split
     }
 
-}));
+});

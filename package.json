@@ -32,5 +32,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "buffer-data-utils": "git+https://github.com/tarling/buffer-data-utils.git"
   }
 }

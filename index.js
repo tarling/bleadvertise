@@ -7,22 +7,22 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-(function (root, factory) {
+(function (root, deps, factory) {
   if(typeof define === "function" && define.amd) {
-    define(['./lib/parser', './lib/serializer'], factory);
+    define(deps, factory);
   } else {
-    module.exports = factory(require('./lib/parser'), require('./lib/serializer'));
+    module.exports = factory.apply(root, deps.map(require));
   }
-}(this, function(PacketParser, PacketBuilder) {
-    
+}(this, ['./lib/parser', './lib/serializer'], function(PacketParser, PacketBuilder) {
+
     return {
         parse: PacketParser.parse,
         parseLE: PacketParser.parseLE,
         parseBE: PacketParser.parseBE,
         serialize: PacketBuilder.serialize,
-        
+
         // For testing only
         split: PacketParser.split
     }
-    
+
 }));
